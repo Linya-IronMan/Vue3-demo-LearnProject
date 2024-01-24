@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        {{ banner }}
+        <h1>首页</h1>
     </div>
 </template>
 

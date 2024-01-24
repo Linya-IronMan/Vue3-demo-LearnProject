@@ -1,4 +1,11 @@
 <template>
+    <router-link to="/">首页</router-link>
+    |
+    <router-link to="/category">分类</router-link>
+    |
+    <router-link to="/shopcart">购物车</router-link>
+    |
+    <router-link to="/profile">我的</router-link>
     <router-view />
 </template>
 

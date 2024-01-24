@@ -1,12 +1,35 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import HomeView from '../views/HomeView.vue';
-import Home from 'views/home/Home.vue';
+const Home = () => import('views/home/Home.vue');
+const Category = () => import('views/category/Category.vue');
+const Detail = () => import('views/detail/Detail.vue');
+const Profile = () => import('views/profile/Profile.vue');
+const ShopCart = () => import('views/shopcart/ShopCart.vue');
 
 const routes = [
     {
         path: '/',
-        name: 'home',
+        name: 'Home',
         component: Home,
+    },
+    {
+        path: '/category',
+        name: 'Category',
+        component: Category,
+    },
+    {
+        path: '/detail',
+        name: 'Detail',
+        component: Detail,
+    },
+    {
+        path: '/profile',
+        name: 'Profile',
+        component: Profile,
+    },
+    {
+        path: '/shopcart',
+        name: 'ShopCart',
+        component: ShopCart,
     },
     {
         path: '/about',
@@ -18,6 +41,9 @@ const routes = [
             import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
     },
 ];
+
+// .env.development 无法控制值
+console.log('======', process.env.BASE_URL);
 
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
