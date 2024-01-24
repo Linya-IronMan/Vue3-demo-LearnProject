@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <div>{{ number }}</div>
+            <div>{{ test }}</div>
+        </div>
+        <div id="app2">
+            <div>{{ name }}</div>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            import { ref } from 'vue';
+            const app = Vue.createApp({
+                setup(props) {
+                    console.log(props, 'props ===>>>');
+                    const test = ref([1, 2, 3]);
+                    return {
+                        test,
+                    };
+                },
+                data: () => {
+                    return {
+                        number: 0,
+                    };
+                },
+            });
+            app.mount('#app');
+
+            const app2 = Vue.createApp({
+                setup(props) {
+                    console.log(props, 'props 23 ===>>>');
+                },
+                data: () => {
+                    return {
+                        name: 'cdt',
+                    };
+                },
+            });
+            app2.mount('#app2');
+        </script>
+    </body>
+</html>
