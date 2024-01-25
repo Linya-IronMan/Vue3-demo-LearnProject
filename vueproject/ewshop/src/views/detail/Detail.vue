@@ -7,11 +7,18 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 import NavBar from 'components/common/navbar/NavBar.vue';
 export default {
     name: 'Detail',
     setup: () => {
-        return {};
+        const route = useRoute();
+        let id = ref(0);
+        id.value = route.query.id;
+        return {
+            id,
+        };
     },
     components: {
         NavBar,
