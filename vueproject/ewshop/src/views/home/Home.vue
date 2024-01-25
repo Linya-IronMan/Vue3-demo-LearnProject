@@ -9,6 +9,66 @@
         </div>
 
         <recommend-view :recommends="recommends"></recommend-view>
+        <tab-control
+            @tabClick="tabClick"
+            :title="['畅销', '新书', '精选']"
+        ></tab-control>
+
+        <goods-list></goods-list>
+
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
+        <div>{{ temid }}</div>
     </div>
 </template>
 
@@ -17,21 +77,29 @@ import { getHomeAllData } from 'network/home';
 import { onMounted, ref, reactive } from 'vue';
 import NavBar from 'components/common/navbar/NavBar.vue';
 import RecommendView from './ChildComps/RecommendView.vue';
+import TabControl from 'components/content/tabControl/TabControl.vue';
+import GoodsList from '@/components/content/goods/GoodsList.vue';
 export default {
     name: 'Home',
-    setup: () => {
+    setup: (props, { emit }) => {
         let recommends = ref([]);
+        // 临时变量
+        let temid = ref(0);
+        const tabClick = index => (temid.value = index);
         onMounted(() => {
             getHomeAllData().then(res => {
                 recommends.value = res.goods.data;
-                console.log('==== Home ====', recommends.value);
             });
         });
         return {
+            tabClick,
+            temid,
             recommends,
         };
     },
     components: {
+        GoodsList,
+        TabControl,
         RecommendView,
         NavBar,
     },
