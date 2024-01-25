@@ -1,12 +1,16 @@
 <template>
     <div class="home">
-        <h1>首页</h1>
+        <nav-bar>
+            <template v-slot:default>图书兄弟</template>
+            <template v-slot:right></template>
+        </nav-bar>
     </div>
 </template>
 
 <script>
 import { getHomeAllData } from 'network/home';
 import { onMounted, ref } from 'vue';
+import NavBar from 'components/common/navbar/NavBar.vue';
 export default {
     name: 'Home',
     setup: () => {
@@ -21,7 +25,9 @@ export default {
             banner,
         };
     },
-    components: {},
+    components: {
+        NavBar,
+    },
 };
 </script>
 
